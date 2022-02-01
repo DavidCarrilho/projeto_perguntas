@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'dart:developer' as developer;
 
 main() => runApp(PerguntaApp());
 
@@ -11,8 +11,11 @@ class PerguntaApp extends StatelessWidget {
 
   PerguntaApp({Key key}) : super(key: key);
 
-  void responder(){
-    
+  void responder() {
+    developer.log(
+      'Pergunta respondida',
+      name: 'method responder',
+    );
   }
 
   @override
@@ -26,15 +29,15 @@ class PerguntaApp extends StatelessWidget {
         body: Column(
           children: <Widget>[
             Text(perguntas[0]),
-            RaisedButton(
+            ElevatedButton(
               child: Text('Resposta 1'),
-              onPressed: () {},
+              onPressed: responder,
             ),
-            RaisedButton(
+            ElevatedButton(
               child: Text('Resposta 2'),
               onPressed: () {},
             ),
-            RaisedButton(
+            ElevatedButton(
               child: Text('Resposta 3'),
               onPressed: () {},
             )
