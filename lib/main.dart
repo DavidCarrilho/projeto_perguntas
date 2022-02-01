@@ -11,6 +11,10 @@ class PerguntaApp extends StatelessWidget {
 
   PerguntaApp({Key key}) : super(key: key);
 
+  void responder(){
+    
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
