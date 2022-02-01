@@ -35,7 +35,10 @@ class PerguntaApp extends StatelessWidget {
             ),
             ElevatedButton(
               child: Text('Resposta 2'),
-              onPressed: () {},
+              onPressed: () => developer.log(
+                'Resposta 2 foi respondida',
+                name: 'Resposta 2',
+              ),
             ),
             ElevatedButton(
               child: Text('Resposta 3'),
