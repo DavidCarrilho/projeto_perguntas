@@ -9,11 +9,12 @@ class PerguntaApp extends StatelessWidget {
     'Wha is favorite animal?',
   ];
 
-  PerguntaApp({Key key}) : super(key: key);
+  final perguntaSelecionada = 0;
 
   void responder() {
+    // perguntaSelecionada++;
     developer.log(
-      'Pergunta respondida',
+      'Pergunta respondida $perguntaSelecionada',
       name: 'method responder',
     );
   }
@@ -28,21 +29,15 @@ class PerguntaApp extends StatelessWidget {
         ),
         body: Column(
           children: <Widget>[
-            Text(perguntas[0]),
-            ElevatedButton(
+            Text(perguntas[perguntaSelecionada]),
+            RaisedButton(
               child: Text('Resposta 1'),
               onPressed: responder,
             ),
-            ElevatedButton(
-              child: Text('Resposta 2'),
-              onPressed: () => developer.log(
-                'Resposta 2 foi respondida',
-                name: 'Resposta 2',
-              ),
-            ),
-            ElevatedButton(
+            RaisedButton(child: Text('Resposta 2'), onPressed: responder),
+            RaisedButton(
               child: Text('Resposta 3'),
-              onPressed: () {},
+              onPressed: responder,
             )
           ],
         ),
