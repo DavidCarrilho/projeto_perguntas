@@ -3,7 +3,12 @@ import 'dart:developer' as developer;
 
 main() => runApp(PerguntaApp());
 
-class PerguntaApp extends StatelessWidget {
+class PerguntaApp extends StatefulWidget {
+  @override
+  State<PerguntaApp> createState() => _PerguntaAppState();
+}
+
+class _PerguntaAppState extends State<PerguntaApp> {
   final List<String> perguntas = [
     'Wha is favorite color?',
     'Wha is favorite animal?',
@@ -19,8 +24,7 @@ class PerguntaApp extends StatelessWidget {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
+ Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -38,7 +42,7 @@ class PerguntaApp extends StatelessWidget {
             RaisedButton(
               child: Text('Resposta 3'),
               onPressed: responder,
-            )
+            ),
           ],
         ),
       ),
