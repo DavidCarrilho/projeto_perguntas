@@ -82,7 +82,7 @@ class _ButtonWithLoadingState extends State<ButtonWithLoading>
                     value: !widget.isLoading
                         ? 0.0
                         : _animation.value,
-                    minHeight: 60.0,
+                    // minHeight: 60.0,
                     backgroundColor: Colors.yellow,
                     valueColor: const AlwaysStoppedAnimation((Colors.amber)),
                   );
