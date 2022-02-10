@@ -4,38 +4,38 @@ import 'dart:developer' as developer;
 
 import 'package:projeto_perguntas/src/components/question.dart';
 
-class QuestionPage extends StatefulWidget {
-  @override
-  State<QuestionPage> createState() => _QuestionPageState();
-}
-
 class _QuestionPageState extends State<QuestionPage> {
-  final List<Map<String, dynamic>> perguntas = [
-    {
-      'text': 'Wha is favorite color?',
-      'answer': ['black', 'yellow', 'red'],
-    },
-    {
-      'text': 'Wha is favorite animal?',
-      'anwser': ['dog', 'cat', 'lion'],
-    },
-    {
-      'text': 'Wha is favorite teacher?',
-      'anwser': ['Jane', 'David', 'Laura'],
-    }
-  ];
-
-  var _perguntaSelecionada = 0;
-
-  void _responder() {
-    setState(() => _perguntaSelecionada++);
-    developer.log(
-      'Pergunta respondida $_perguntaSelecionada',
-      name: 'method responder',
-    );
-  }
-
   Widget build(BuildContext context) {
+    var perguntas = [
+      {
+        'text': 'Wha is favorite color?',
+        'answer': ['black', 'yellow', 'red'],
+      },
+      {
+        'text': 'Wha is favorite animal?',
+        'answer': ['dog', 'cat', 'lion'],
+      },
+      {
+        'text': 'Wha is favorite teacher?',
+        'answer': ['Jane', 'David', 'Laura'],
+      }
+    ];
+
+    var _perguntaSelecionada = 0;
+
+    void _responder() {
+      setState(() => _perguntaSelecionada++);
+      developer.log(
+        'Pergunta respondida $_perguntaSelecionada',
+        name: 'method responder',
+      );
+    }
+
+    List<Widget> anwsers = [];
+    for (var textoResp in perguntas[_perguntaSelecionada].cast()['answer']) {
+      anwsers.add(Answer(text: textoResp, onSelected: _responder));
+    }
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -62,4 +62,9 @@ class _QuestionPageState extends State<QuestionPage> {
       ),
     );
   }
+}
+
+class QuestionPage extends StatefulWidget {
+  @override
+  State<QuestionPage> createState() => _QuestionPageState();
 }
