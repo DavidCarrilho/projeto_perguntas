@@ -4,7 +4,24 @@ import 'dart:developer' as developer;
 
 import 'package:projeto_perguntas/src/components/question.dart';
 
+class QuestionPage extends StatefulWidget {
+  @override
+  State<QuestionPage> createState() => _QuestionPageState();
+}
+
 class _QuestionPageState extends State<QuestionPage> {
+  var _perguntaSelecionada = 0;
+
+  void _responder() {
+    setState(() {
+      return _perguntaSelecionada++;
+    });
+    developer.log(
+      'Pergunta respondida $_perguntaSelecionada',
+      name: 'method responder',
+    );
+  }
+
   Widget build(BuildContext context) {
     var perguntas = [
       {
@@ -21,19 +38,12 @@ class _QuestionPageState extends State<QuestionPage> {
       }
     ];
 
-    var _perguntaSelecionada = 0;
-
-    void _responder() {
-      setState(() => _perguntaSelecionada++);
-      developer.log(
-        'Pergunta respondida $_perguntaSelecionada',
-        name: 'method responder',
-      );
-    }
-
     List<Widget> anwsers = [];
-    for (var textoResp in perguntas[_perguntaSelecionada].cast()['answer']) {
-      anwsers.add(Answer(text: textoResp, onSelected: _responder));
+    for (var anwsersText in perguntas[_perguntaSelecionada].cast()['answer']) {
+      anwsers.add(Answer(
+        text: anwsersText,
+        onSelected: _responder,
+      ));
     }
 
     return MaterialApp(
@@ -45,26 +55,10 @@ class _QuestionPageState extends State<QuestionPage> {
         body: Column(
           children: <Widget>[
             Question(perguntas[_perguntaSelecionada]['text'].toString()),
-            Answer(
-              text: 'Resposta 1',
-              onSelected: _responder,
-            ),
-            Answer(
-              text: 'Resposta 2',
-              onSelected: _responder,
-            ),
-            Answer(
-              text: 'Resposta 3',
-              onSelected: _responder,
-            ),
+            ...anwsers,
           ],
         ),
       ),
     );
   }
-}
-
-class QuestionPage extends StatefulWidget {
-  @override
-  State<QuestionPage> createState() => _QuestionPageState();
 }
