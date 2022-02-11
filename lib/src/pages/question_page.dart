@@ -38,13 +38,14 @@ class _QuestionPageState extends State<QuestionPage> {
       }
     ];
 
-    List<Widget> anwsers = [];
-    for (var anwsersText in perguntas[_perguntaSelecionada].cast()['answer']) {
-      anwsers.add(Answer(
-        text: anwsersText,
-        onSelected: _responder,
-      ));
-    }
+    List<String> anwsers = perguntas[_perguntaSelecionada].cast()['answer'];
+    // List<Widget> widgets = anwsers.map((t) => Answer(text: t, onSelected: _responder)).toList();
+    // for (var anwsersText in anwsers) {
+    //   widgets.add(Answer(
+    //     text: anwsersText,
+    //     onSelected: _responder,
+    //   ));
+    // }
 
     return MaterialApp(
       home: Scaffold(
@@ -55,7 +56,7 @@ class _QuestionPageState extends State<QuestionPage> {
         body: Column(
           children: <Widget>[
             Question(perguntas[_perguntaSelecionada]['text'].toString()),
-            ...anwsers,
+            ...anwsers.map((t) => Answer(text: t, onSelected: _responder)).toList(),
           ],
         ),
       ),
