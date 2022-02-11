@@ -11,34 +11,41 @@ class QuestionPage extends StatefulWidget {
 
 class _QuestionPageState extends State<QuestionPage> {
   var _perguntaSelecionada = 0;
+  final List<Map<String, Object>> _question = const [
+    {
+      'text': 'Wha is favorite color?',
+      'answer': ['black', 'yellow', 'red'],
+    },
+    {
+      'text': 'Wha is favorite animal?',
+      'answer': ['dog', 'cat', 'lion'],
+    },
+    {
+      'text': 'Wha is favorite teacher?',
+      'answer': ['Jane', 'David', 'Laura'],
+    }
+  ];
 
   void _responder() {
-    setState(() {
-      return _perguntaSelecionada++;
-    });
-    developer.log(
-      'Pergunta respondida $_perguntaSelecionada',
-      name: 'method responder',
-    );
+    if (hasQuestionSelected) {
+      setState(() {
+        return _perguntaSelecionada++;
+      });
+      developer.log(
+        'Pergunta respondida $_perguntaSelecionada',
+        name: 'method responder',
+      );
+    }
+  }
+
+  bool get hasQuestionSelected {
+    return _perguntaSelecionada < _question.length;
   }
 
   Widget build(BuildContext context) {
-    var perguntas = [
-      {
-        'text': 'Wha is favorite color?',
-        'answer': ['black', 'yellow', 'red'],
-      },
-      {
-        'text': 'Wha is favorite animal?',
-        'answer': ['dog', 'cat', 'lion'],
-      },
-      {
-        'text': 'Wha is favorite teacher?',
-        'answer': ['Jane', 'David', 'Laura'],
-      }
-    ];
-
-    List<String> anwsers = perguntas[_perguntaSelecionada].cast()['answer'];
+    List<String> anwsers = hasQuestionSelected
+        ? _question[_perguntaSelecionada].cast()['answer']
+        : [];
     // List<Widget> widgets = anwsers.map((t) => Answer(text: t, onSelected: _responder)).toList();
     // for (var anwsersText in anwsers) {
     //   widgets.add(Answer(
@@ -53,12 +60,16 @@ class _QuestionPageState extends State<QuestionPage> {
           title: Text('Perguntas'),
           centerTitle: true,
         ),
-        body: Column(
-          children: <Widget>[
-            Question(perguntas[_perguntaSelecionada]['text'].toString()),
-            ...anwsers.map((t) => Answer(text: t, onSelected: _responder)).toList(),
-          ],
-        ),
+        body: hasQuestionSelected
+            ? Column(
+                children: <Widget>[
+                  Question(_question[_perguntaSelecionada]['text'].toString()),
+                  ...anwsers
+                      .map((t) => Answer(text: t, onSelected: _responder))
+                      .toList(),
+                ],
+              )
+            : const SizedBox(),
       ),
     );
   }
