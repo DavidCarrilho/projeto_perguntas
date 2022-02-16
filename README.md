@@ -1,6 +1,10 @@
 # projeto_perguntas
 
-A new Flutter project.
+A new Flutter quiz project.
+
+<p float="left">
+  <img src="screenshot\screenshot.gif" width="200">
+</p>
 
 ## Getting Started
 
