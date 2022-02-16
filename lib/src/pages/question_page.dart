@@ -70,7 +70,7 @@ class _QuestionPageState extends State<QuestionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Perguntas'),
+        title: Text('Perguntas', style: TextStyle(fontSize: 26),),
         centerTitle: true,
       ),
       body: hasQuestionSelected
