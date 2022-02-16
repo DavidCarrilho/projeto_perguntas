@@ -54,23 +54,26 @@ class _QuestionPageState extends State<QuestionPage> {
     //   ));
     // }
 
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Perguntas'),
-          centerTitle: true,
-        ),
-        body: hasQuestionSelected
-            ? Column(
-                children: <Widget>[
-                  Question(_question[_perguntaSelecionada]['text'].toString()),
-                  ...anwsers
-                      .map((t) => Answer(text: t, onSelected: _responder))
-                      .toList(),
-                ],
-              )
-            : const SizedBox(),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Perguntas'),
+        centerTitle: true,
       ),
+      body: hasQuestionSelected
+          ? Column(
+              children: <Widget>[
+                Question(_question[_perguntaSelecionada]['text'].toString()),
+                ...anwsers
+                    .map((t) => Answer(text: t, onSelected: _responder))
+                    .toList(),
+              ],
+            )
+          : Center(
+              child: Text(
+                'Parabéns!',
+                style: TextStyle(fontSize: 28.0),
+              ),
+            ),
     );
   }
 }
