@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_perguntas/src/components/answer.dart';
+import 'package:projeto_perguntas/src/components/componenst.dart';
 import 'dart:developer' as developer;
 
 import 'package:projeto_perguntas/src/components/question.dart';
@@ -68,12 +69,7 @@ class _QuestionPageState extends State<QuestionPage> {
                     .toList(),
               ],
             )
-          : Center(
-              child: Text(
-                'Parabéns!',
-                style: TextStyle(fontSize: 28.0),
-              ),
-            ),
+          : ResultComponent()
     );
   }
 }
