@@ -16,7 +16,7 @@ class Answer extends StatelessWidget {
       child: RaisedButton(
         color: Colors.blue,
         textColor: Colors.white,
-        child: Text(text),
+        child: Text(text.toUpperCase()),
         onPressed: onSelected,
       ),
     );

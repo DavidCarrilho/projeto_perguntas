@@ -24,20 +24,23 @@ class Quiz extends StatelessWidget {
     List<Map<String, Object>> anwsers =
         hasQuestionSelected ? questions[selectedQuestion].cast()['answer'] : [];
 
-    return Column(
-      children: <Widget>[
-        Question(questions[selectedQuestion]['text'].toString()),
-        ...anwsers
-            .map(
-              (ans) {
-                return Answer(
-                text: ans['text'].toString(),
-                onSelected: () => onAnwser(int.parse(ans['score'].toString())),
-              );
-              },
-            )
-            .toList(),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: Column(
+        children: <Widget>[
+          Question(questions[selectedQuestion]['text'].toString()),
+          ...anwsers
+              .map(
+                (ans) {
+                  return Answer(
+                  text: ans['text'].toString(),
+                  onSelected: () => onAnwser(int.parse(ans['score'].toString())),
+                );
+                },
+              )
+              .toList(),
+        ],
+      ),
     );
   }
 }
