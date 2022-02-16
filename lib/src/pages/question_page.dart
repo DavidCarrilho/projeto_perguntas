@@ -14,15 +14,27 @@ class _QuestionPageState extends State<QuestionPage> {
   final List<Map<String, Object>> _question = const [
     {
       'text': 'Wha is favorite color?',
-      'answer': ['black', 'yellow', 'red'],
+      'answer': [
+        {'text': 'black', 'nota': 10},
+        {'text': 'yellow', 'nota': 5},
+        {'text': 'red', 'nota': 3},
+      ],
     },
     {
       'text': 'Wha is favorite animal?',
-      'answer': ['dog', 'cat', 'lion'],
+      'answer': [
+        {'text': 'dog', 'nota': 10},
+        {'text': 'cat', 'nota': 10},
+        {'text': 'lion', 'nota': 10},
+      ],
     },
     {
       'text': 'Wha is favorite teacher?',
-      'answer': ['Jane', 'David', 'Laura'],
+      'answer': [
+        {'text': 'Jane', 'nota': 10},
+        {'text': 'David', 'nota': 10},
+        {'text': 'Laura', 'nota': 10},
+      ],
     }
   ];
 
@@ -38,7 +50,6 @@ class _QuestionPageState extends State<QuestionPage> {
     }
   }
 
-  
   bool get hasQuestionSelected {
     return _selectedQuestion < _question.length;
   }
