@@ -11,43 +11,56 @@ class QuestionPage extends StatefulWidget {
 
 class _QuestionPageState extends State<QuestionPage> {
   var _selectedQuestion = 0;
+  var _totalScore = 0;
   final List<Map<String, Object>> _question = const [
     {
       'text': 'Wha is favorite color?',
       'answer': [
-        {'text': 'black', 'nota': 10},
-        {'text': 'yellow', 'nota': 5},
-        {'text': 'red', 'nota': 3},
+        {'text': 'black', 'score': 6},
+        {'text': 'yellow', 'score': 5},
+        {'text': 'red', 'score': 3},
       ],
     },
     {
       'text': 'Wha is favorite animal?',
       'answer': [
-        {'text': 'dog', 'nota': 10},
-        {'text': 'cat', 'nota': 10},
-        {'text': 'lion', 'nota': 10},
+        {'text': 'dog', 'score': 7},
+        {'text': 'cat', 'score': 4},
+        {'text': 'lion', 'score': 5},
       ],
     },
     {
       'text': 'Wha is favorite teacher?',
       'answer': [
-        {'text': 'Jane', 'nota': 10},
-        {'text': 'David', 'nota': 10},
-        {'text': 'Laura', 'nota': 10},
+        {'text': 'Jane', 'score': 8},
+        {'text': 'David', 'score': 9},
+        {'text': 'Laura', 'score': 3},
       ],
     }
   ];
 
-  void _anwser() {
+  void _anwser(int score) {
     if (hasQuestionSelected) {
       setState(() {
-        return _selectedQuestion++;
+        _selectedQuestion++;
+        _totalScore += score;
       });
       developer.log(
         'Pergunta respondida $_selectedQuestion',
         name: 'method responder',
       );
+      developer.log(
+        'Pontuação Total: $_totalScore',
+        name: 'Pontuação Total',
+      );
     }
+  }
+
+  void _restartQuiz() {
+    setState(() {
+      _selectedQuestion = 0;
+      _totalScore = 0;
+    });
   }
 
   bool get hasQuestionSelected {
@@ -66,7 +79,7 @@ class _QuestionPageState extends State<QuestionPage> {
               selectedQuestion: _selectedQuestion,
               onAnwser: _anwser,
             )
-          : ResultComponent(),
+          : ResultComponent(score: _totalScore),
     );
   }
 }
