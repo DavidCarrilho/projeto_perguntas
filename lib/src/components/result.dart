@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 
 class ResultComponent extends StatelessWidget {
   final int score;
+  final void Function() whileRestartQuiz;
 
-  const ResultComponent({Key key, this.score}) : super(key: key);
+  const ResultComponent({
+    Key key,
+    this.score,
+    this.whileRestartQuiz,
+  }) : super(key: key);
 
   String get displayResult {
     if (score < 8) {
@@ -19,11 +24,24 @@ class ResultComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        displayResult,
-        style: TextStyle(fontSize: 28.0),
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Center(
+          child: Text(
+            displayResult,
+            style: TextStyle(fontSize: 28.0),
+          ),
+        ),
+        FlatButton(
+          onPressed: whileRestartQuiz,
+          child: Text(
+            'Reiniciar?',
+            style: TextStyle(fontSize: 20.0),
+          ),
+          textColor: Colors.blue,
+        )
+      ],
     );
   }
 }

@@ -79,7 +79,10 @@ class _QuestionPageState extends State<QuestionPage> {
               selectedQuestion: _selectedQuestion,
               onAnwser: _anwser,
             )
-          : ResultComponent(score: _totalScore),
+          : ResultComponent(
+              score: _totalScore,
+              whileRestartQuiz: _restartQuiz,
+            ),
     );
   }
 }
