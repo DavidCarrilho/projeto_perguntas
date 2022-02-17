@@ -3,7 +3,7 @@
 A new Flutter quiz project.
 
 <p float="left">
-  <img src="screenshot\screenshot.gif" width="200">
+  <img src="lib/screenshot/screenshot.gif" width="200">
 </p>
 
 ## Getting Started

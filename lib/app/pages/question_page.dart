@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:projeto_perguntas/src/components/componenst.dart';
 import 'dart:developer' as developer;
 
-import 'package:projeto_perguntas/src/components/quiz.dart';
+import 'package:flutter/material.dart';
+
+import '../components/componenst.dart';
+
 
 class QuestionPage extends StatefulWidget {
   @override
